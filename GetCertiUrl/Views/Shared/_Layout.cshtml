@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Content/Js/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+   
+    <script src="~/Content/Js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="~/Content/toastr/toastr.js"></script>
+  
+    <link href="~/Content/toastr/toastr.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="~/Content/Js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="~/Content/Js/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            top: 0;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img1 {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img2 {
+            width: 250px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img3 {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img-spinner {
+            width: 38px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+    </style>
+    <script type="text/javascript">
+        var loaderShow = function () {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+        }
+
+        var loaderHide = function () {
+            $('.loading-overlay-image-container').hide();
+            $('.loading-overlay').hide();
+        }
+    </script>
+  
+</head>
+<body>
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        <img src="~/Content/images/Loader2.gif" class="loading-overlay-img3" />
+    </div>
+
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Get Url</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                </li>
+            </ul>
+           
+        </div>
+    </nav>
+    <div class="container body-content" style="margin-top:10px;">
+        @RenderBody()
+        <hr />
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

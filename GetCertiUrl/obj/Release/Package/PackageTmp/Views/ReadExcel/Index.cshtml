@@ -1,0 +1,40 @@
+﻿@model GetCertiUrl.Models.ReadExcel
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+   
+
+    @if (!string.IsNullOrEmpty(ViewBag.Message))
+    {
+        <script type="text/javascript">
+            
+        var viewbag = "@ViewBag.Message";
+        if (viewbag != '') {
+           if (viewbag.search('.xlsx') == -1) {
+                toastr.warning(viewbag);
+           }
+        else {
+               toastr.success('File Download Successfully');
+               location.href = viewbag;
+             }
+        }
+        </script>
+
+    }
+
+
+</head>
+@using (Html.BeginForm("Index", "ReadExcel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.TextBoxFor(m => m.file, new { type = "file" })
+    <button id="submitButton" class="btn btn-outline-info" type="submit">Submit</button>
+    @Html.ValidationMessageFor(model => model.file)
+    <br />
+    <p id="error" style="color:red;"></p>
+}
+
